@@ -8,7 +8,7 @@ pygame.init()
 WIDTH = 800
 HEIGHT = 600
 
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.SCALED)
 pygame.display.set_caption("Sonic Ring Collector")
 
 clock = pygame.time.Clock()
@@ -21,15 +21,15 @@ font_small = pygame.font.SysFont("Arial", 24)
 
 async def main():
 
-    bg_img = pygame.image.load("Sonic_Background.png").convert()
+    bg_img = pygame.image.load("Sonic_Background.png")
     bg_img = pygame.transform.scale(bg_img, (WIDTH, HEIGHT))
 
-    player_img = pygame.image.load("sonic.png").convert_alpha()
+    player_img = pygame.image.load("sonic.png")
     player_img = pygame.transform.scale(player_img, (40, 50))
 
-    platform_img = pygame.image.load("sonic_platform.png").convert_alpha()
+    platform_img = pygame.image.load("sonic_platform.png")
 
-    ring_img = pygame.image.load("sonic_ring.png").convert_alpha()
+    ring_img = pygame.image.load("sonic_ring.png")
     ring_img = pygame.transform.scale(ring_img, (24, 24))
 
     player_rect = pygame.Rect(100, 450, 40, 50)
@@ -153,6 +153,7 @@ async def main():
             if len(rings) == 0:
                 game_state = "WIN"
 
+        screen.fill((0, 0, 0))
         screen.blit(bg_img, (0, 0))
 
         if game_state == "START":
